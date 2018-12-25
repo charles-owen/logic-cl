@@ -1,0 +1,29 @@
+{
+  "name" : "cl/logic",
+  "description": "CourseLib Logic libraries project.",
+  "type" : "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Charles B. Owen",
+      "email": "cbowen@msu.edu"
+    }
+  ],
+  "autoload":{
+    "psr-4": {
+      "CL\\Logic\\": "src/Logic"
+    }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/charles-owen/logic-cl.git"
+    }
+  ],
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.0.x-dev"
+    }
+  }
+}
+
