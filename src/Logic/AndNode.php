@@ -6,7 +6,7 @@
  * Time: 9:33 PM
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 
 class AndNode extends Node {

@@ -4,7 +4,7 @@
  * Check that a string is in correct sum of products form.
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 /**
  * Check that a string is in correct sum of products form

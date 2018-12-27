@@ -6,7 +6,7 @@
  * Time: 9:34 PM
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 
 class OrNode extends Node {

@@ -3,7 +3,7 @@
  * @file Abstract base class for nodes in a logic tree
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 
 abstract class Node {

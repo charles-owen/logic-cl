@@ -4,7 +4,7 @@
  * Exceptions when parsing logic trees.
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 /**
  * Exceptions when parsing logic trees.

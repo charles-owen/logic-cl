@@ -4,7 +4,7 @@
  * Boolean logic expression tree class
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 /**
  * Boolean logic expression tree class

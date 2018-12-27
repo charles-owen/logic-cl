@@ -4,7 +4,7 @@
  * Automatically create truth tables
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 /**
  * Automatically create truth tables

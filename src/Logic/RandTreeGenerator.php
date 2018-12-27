@@ -4,9 +4,11 @@
  * Create a random expression tree.
  */
 
-namespace Logic;
+namespace CL\Logic;
 
-
+/**
+ * Create a random expression tree.
+ */
 class RandTreeGenerator {
 	const AndNode = 1;
 	const OrNode = 2;

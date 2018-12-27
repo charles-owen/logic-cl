@@ -6,7 +6,7 @@
  * Time: 9:37 PM
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 
 class NotNode extends Node {

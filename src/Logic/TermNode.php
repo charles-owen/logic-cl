@@ -6,7 +6,7 @@
  * Time: 9:24 PM
  */
 
-namespace Logic;
+namespace CL\Logic;
 
 
 class TermNode extends Node {
