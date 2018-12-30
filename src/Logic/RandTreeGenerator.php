@@ -28,7 +28,7 @@ class RandTreeGenerator {
 	public function create() {
 		$tree = new Tree($this->terms);
 		do {
-            $terms = $tree->get_terms();
+            $terms = $tree->terms;
             $term = $terms[mt_rand(0, count($terms)-1)];
 
 			$node = $this->generate(0, $tree, $term);
@@ -51,7 +51,7 @@ class RandTreeGenerator {
 
 		// How many on this level?
 		$num = mt_rand($this->levels[$level]["min"], $this->levels[$level]["max"]);
-        $terms = $tree->get_terms();
+        $terms = $tree->terms;
         shuffle($terms);
 		if($num == 1) {
 			return $this->generate($level+1, $tree, $terms[0]);
@@ -70,5 +70,5 @@ class RandTreeGenerator {
 
 
 	private $terms;
-	private $levels = array();
+	private $levels = [];
 }

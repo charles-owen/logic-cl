@@ -1,20 +1,26 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: charl
- * Date: 1/1/2017
- * Time: 9:33 PM
+ * @file
+ * AND node in expression tree
  */
 
 namespace CL\Logic;
 
-
+/**
+ * AND node in expression tree
+ */
 class AndNode extends Node {
-
+	/**
+	 * AndNode constructor.
+	 */
 	public function __construct() {
 		$this->children = func_get_args();
 	}
 
+	/**
+	 * Generate the expression for this node
+	 * @return string Expression
+	 */
 	public function expression() {
 		$ret = '';
 		foreach($this->children as $child) {
@@ -27,10 +33,18 @@ class AndNode extends Node {
 		return $ret;
 	}
 
+	/**
+	 * Get the precedence order for this operator
+	 * @return int Precedence
+	 */
 	public function precedence() {
 		return 2;
 	}
 
+	/**
+	 * Compute the solution for this node
+	 * @return string
+	 */
 	public function solve() {
 		$ret = true;
 		foreach($this->children as $child) {
@@ -40,10 +54,17 @@ class AndNode extends Node {
 		return $ret;
 	}
 
+	/**
+	 * Add a new child node
+	 * @param Node $child Child to add
+	 */
 	public function add_child($child) {
 		$this->children[] = $child;
 	}
 
+	/**
+	 * Optimize the tree
+	 */
 	public function optimize() {
 		// First optimize the children
 		foreach($this->children as $child) {
@@ -71,7 +92,7 @@ class AndNode extends Node {
 		 * in the expression. We are allowed to see a term
 		 * only once. And, if canonical, we must see all terms.
 		 */
-		$terms = $tree->get_terms();
+		$terms = $tree->terms;
 		foreach($terms as $term) {
 			$term->seen = false;
 		}

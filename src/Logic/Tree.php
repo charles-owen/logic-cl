@@ -8,6 +8,10 @@ namespace CL\Logic;
 
 /**
  * Boolean logic expression tree class
+ *
+ * @cond
+ * @property array terms
+ * @endcond
 */
 class Tree {
 	/**
@@ -26,6 +30,34 @@ class Tree {
 			foreach(func_get_args() as $term) {
 				$this->add_term($term);
 			}
+		}
+	}
+
+	/**
+	 * Property get magic method
+	 *
+	 * <b>Properties</b>
+	 * Property | Type | Description
+	 * -------- | ---- | -----------
+	 * terms | array | Array of TermNode objects representing the terms of the equaltion
+	 *
+	 * @param string $property Property name
+	 * @return mixed
+	 */
+	public function __get($property) {
+		switch($property) {
+			case 'terms':
+				return $this->terms;
+				break;
+
+			default:
+				$trace = debug_backtrace();
+				trigger_error(
+					'Undefined property ' . $property .
+					' in ' . $trace[0]['file'] .
+					' on line ' . $trace[0]['line'],
+					E_USER_NOTICE);
+				return null;
 		}
 	}
 
@@ -388,6 +420,6 @@ class Tree {
 		return null;
 	}
 
-	private $terms = array();
+	private $terms = [];
 	private $root = null;
 }

@@ -1,19 +1,26 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: charl
- * Date: 1/1/2017
- * Time: 9:34 PM
+ * @file
+ * OR node in an expression tree
  */
 
 namespace CL\Logic;
 
-
+/**
+ * OR node in an expression tree
+ */
 class OrNode extends Node {
+	/**
+	 * OrNode constructor.
+	 */
 	public function __construct() {
 		$this->children = func_get_args();
 	}
 
+	/**
+	 * Generate the expression for this node
+	 * @return string Expression
+	 */
 	public function expression() {
 		$ret = '';
 		$first = true;
@@ -33,10 +40,18 @@ class OrNode extends Node {
 		return $ret;
 	}
 
+	/**
+	 * Get the precedence order for this operator
+	 * @return int Precedence
+	 */
 	public function precedence() {
 		return 1;
 	}
 
+	/**
+	 * Compute the solution for this node
+	 * @return string
+	 */
 	public function solve() {
 		$ret = false;
 		foreach($this->children as $child) {
@@ -46,10 +61,17 @@ class OrNode extends Node {
 		return $ret;
 	}
 
+	/**
+	 * Add a new child node
+	 * @param Node $child Child to add
+	 */
 	public function add_child($child) {
 		$this->children[] = $child;
 	}
 
+	/**
+	 * Optimize the tree
+	 */
 	public function optimize() {
 		// First optimize the children
 		foreach($this->children as $child) {
@@ -68,6 +90,10 @@ class OrNode extends Node {
 		$this->children = $children;
 	}
 
+	/**
+	 * Get children of this node
+	 * @return array of Children
+	 */
 	public function get_children() {
 		return $this->children;
 	}

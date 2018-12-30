@@ -61,6 +61,10 @@ class NotNode extends Node {
 		}
 	}
 
+	/**
+	 * Get any child of this node
+	 * @return Node Child of this node
+	 */
 	public function get_child() {
 		return $this->child;
 	}
