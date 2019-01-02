@@ -5,7 +5,7 @@
  */
 namespace CL\Logic;
 
-class LogicCheckSOPTest extends \PHPUnit_Framework_TestCase
+class LogicCheckSOPTest extends \PHPUnit\Framework\TestCase
 {
 	public function test_validate() {
 		$check = new CheckSOP("A", "B", "C");

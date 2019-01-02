@@ -5,7 +5,7 @@
  */
 namespace CL\Logic;
 
-class LogicTreeTest extends \PHPUnit_Framework_TestCase
+class LogicTreeTest extends \PHPUnit\Framework\TestCase
 {
 	public function test_not() {
 		$tree = new Tree();
