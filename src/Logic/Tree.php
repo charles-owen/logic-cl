@@ -50,6 +50,9 @@ class Tree {
 				return $this->terms;
 				break;
 
+			case 'root':
+				return $this->root;
+
 			default:
 				$trace = debug_backtrace();
 				trigger_error(
@@ -95,12 +98,16 @@ class Tree {
 
 	/**
 	 * Set the tree root node
-	 * @param $root Reference to a Node object
+	 * @param Node $root Reference to a Node object
 	 */
 	public function set_root($root) {
 		$this->root = $root;
 	}
 
+	/**
+	 * Get the tree root
+	 * @return Node object
+	 */
 	public function get_root() {
 		return $this->root;
 	}
@@ -128,6 +135,10 @@ class Tree {
 		return $this->root === null ? true : $this->root->solve();
 	}
 
+	/**
+	 * Get the minterms for this tree
+	 * @return array of terms
+	 */
 	public function get_terms() {
 		return $this->terms;
 	}
@@ -149,6 +160,10 @@ class Tree {
 		return $ret;
 	}
 
+	/**
+	 * Construct an expression based no the minterms for the tree
+	 * @return string Expression
+	 */
 	public function minterm_expression() {
 		$minterms = $this->minterms();
 		$first = true;
@@ -179,6 +194,7 @@ class Tree {
 	 * Validate that the supplied expression for this tree is a valid
 	 * sum of products representation.
 	 * @param $canonical - Must have all terms
+	 * @return bool If valid
 	 */
 	public function validate_sop($canonical=true) {
 		if($this->root === null) {
@@ -199,7 +215,7 @@ class Tree {
 	/**
 	 * Convert a number into an appropriate size array of booleans
 	 *
-	 * Example: 13 => array(true, true, false, true)
+	 * Example: 13 => [true, true, false, true]
 	 *
 	 * @param $num Number to convert
 	 * @param $bits Size of result
@@ -217,10 +233,17 @@ class Tree {
 		return $b;
 	}
 
+	/**
+	 * Return minterms based the value $num
+	 * @param int $num Value to convert to minterms based on set bits
+	 * @param int $bits Number of bits (3, 4, etc)
+	 * @param $m True if we want the 'm' prefix on each minterm
+	 * @return array
+	 */
 	public static function to_minterms_list($num, $bits, $m) {
 		$n = pow(2, $bits);
 		$b = self::to_binary_array($num, $n);
-		$minterms = array();
+		$minterms = [];
 
 		for($i=0; $i<$n; $i++) {
 			if($b[$i]) {
@@ -231,6 +254,11 @@ class Tree {
 		return $minterms;
 	}
 
+	/**
+	 * Convert minterms into a displayable expression
+	 * @param array $minterms
+	 * @return string
+	 */
 	public function minterms_to_expression(array $minterms) {
 		$exp = '';
 		$first = true;
@@ -247,6 +275,11 @@ class Tree {
 		return $exp;
 	}
 
+	/**
+	 * Convert a single minterm into an expression
+	 * @param int $minterm Minterm to convert
+	 * @return string
+	 */
 	public function minterm_to_expression($minterm) {
 		$bin = self::to_binary_array($minterm, count($this->terms));
 		$ret = '';

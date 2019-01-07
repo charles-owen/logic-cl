@@ -10,9 +10,15 @@ namespace CL\Logic;
  * Create a random expression tree.
  */
 class RandTreeGenerator {
+	/// Constant representing an AND node
 	const AndNode = 1;
+
+	/// Constant representing an OR node
 	const OrNode = 2;
 
+	/**
+	 * RandTreeGenerator constructor.
+	 */
 	public function __construct() {
 		if(func_num_args() == 1 && is_array(func_get_arg(0))) {
 			$this->terms = func_get_arg(0);
@@ -21,10 +27,20 @@ class RandTreeGenerator {
 		}
 	}
 
+	/**
+	 * Specify limits for a level of the tree
+	 * @param int $type Type AndNode or OrNode constants
+	 * @param int $min Minimum size in terms
+	 * @param int $max Maximum size in terms
+	 */
 	public function level($type, $min, $max) {
 		$this->levels[] = array("type" => $type, "min" => $min, "max" => $max);
 	}
 
+	/**
+	 * Create a tree
+	 * @return Tree Created tree
+	 */
 	public function create() {
 		$tree = new Tree($this->terms);
 		do {
