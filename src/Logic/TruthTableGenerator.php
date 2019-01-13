@@ -10,16 +10,29 @@ namespace CL\Logic;
  * Automatically create truth tables
  */
 class TruthTableGenerator {
-
+	/**
+	 * TruthTableGenerator constructor.
+	 * @param array $inputs Number of table inputs
+	 * @param array $outputs Number of table outputs
+	 */
 	public function __construct(array $inputs, array $outputs) {
 		$this->inputs = $inputs;
 		$this->outputs = $outputs;
 	}
 
+	/**
+	 * Add a row to the table
+	 * @param array $row Row to add
+	 */
 	public function row(array $row) {
 		$this->rows[] = $row;
 	}
 
+	/**
+	 * Present the table in HTML
+	 * @param string|null $div Optional class to add to div tag
+	 * @return string HTML
+	 */
 	public function present($div = null) {
 		$html = '';
 
