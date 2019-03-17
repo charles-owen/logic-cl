@@ -33,16 +33,16 @@ class TruthTableGenerator {
 	 * @param string|null $div Optional class to add to div tag
 	 * @return string HTML
 	 */
-	public function present($div = null) {
+	public function present($div = null, $cls = null) {
 		$html = '';
 
 		if($div !== null) {
 			$html .= '<div class="' . $div . '">';
 		}
 
-		$cls = 'truth-table';
+		$tableClass = $cls !== null ? 'truth-table ' . $cls : 'truth-table';
 
-		$html .= "<table class=\"$cls\"><tr>";
+		$html .= "<table class=\"$tableClass\"><tr>";
 		foreach($this->inputs as $input) {
 			$html .= "<th>$input</th>";
 		}
@@ -82,6 +82,7 @@ class TruthTableGenerator {
 		}
 		return $html;
 	}
+
 
 	private $inputs = null;
 	private $outputs = null;
