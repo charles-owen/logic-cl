@@ -137,13 +137,12 @@ class LogicTreeTest extends \PHPUnit\Framework\TestCase
 
 	}
 
-	/**
-	 * @expectedException CL\Logic\TreeParseException
-	 */
+
 	public function test_parse_syntax() {
 		$tree = new Tree('A', 'B', 'C');
 
-		$tree->parse("A(");
+		$this->expectException(\CL\Logic\TreeParseException::class);
+        $tree->parse("A(");
 	}
 
 
@@ -153,7 +152,8 @@ class LogicTreeTest extends \PHPUnit\Framework\TestCase
 	public function test_parse_syntax2() {
 		$tree = new Tree('A', 'B', 'C');
 
-		$tree->parse("X");
+        $this->expectException(\CL\Logic\TreeParseException::class);
+        $tree->parse("X");
 	}
 
 	public function test_minterm_to_expression() {

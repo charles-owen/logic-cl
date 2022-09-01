@@ -52,7 +52,13 @@ class LogicCheckSOPTest extends \PHPUnit\Framework\TestCase
 
 		// Some strange unicode character that looks like a hash mark?
 		$this->assertTrue($check->check("A’BC+A’BC’+ABC", "A'BC'+A'BC+ABC"));
-	}
+
+        $this->assertTrue($check->check("AB'C", "AB'C"));
+        $this->assertTrue($check->check("AB&#039;C", "AB'C"));
+        $this->assertTrue($check->check("AB&#039;C", "AB&#039;C"));
+        $this->assertTrue($check->check("AB'C", "AB&#039;C"));
+
+    }
 }
 
 /// @endcond

@@ -50,6 +50,8 @@ class CheckSOP {
 	 * @return bool True if valid and equivalent
 	 */
 	public function check($expected, $given, $canonical=true) {
+        $expected = str_replace("&#039;", "'", $expected);
+        $given = str_replace("&#039;", "'", $given);
 		$tree = new Tree($this->terms);
 		try {
 			$tree->parse($given);

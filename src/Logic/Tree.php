@@ -402,6 +402,10 @@ class Tree {
 
 	private function H($state) {
 		$token = $this->token();
+        if($token == null) {
+            return $state;
+        }
+
 		if(ord($token) == 226) {
 			$this->advance();
 			$token = $this->token();
@@ -444,6 +448,10 @@ class Tree {
 	}
 
 	private function get_term($name) {
+        if($name == null) {
+            return null;
+        }
+
 		foreach($this->terms as $term) {
 			if(strcasecmp($term->name, $name) == 0) {
 				return $term;
